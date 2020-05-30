@@ -1,48 +1,45 @@
 import React, { useState } from "react";
 import firebase from "firebase";
-import { navigate } from "../navigationRef.js";
-import { Alert } from "react-native";
 
 export const AuthContext = React.createContext();
 
 export const AuthProvider = (props) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [ctaLoading, setCtaLoading] = useState(false)
+  const [ctaLoading, setCtaLoading] = useState(false);
 
   const checkAuth = () => {
     setLoading(true);
     firebase.auth().onAuthStateChanged((user) => {
       if (user != null) {
-        console.log("We are authenticated now!");
+        //User is authenticated
         setIsSignedIn(true);
       } else {
+        //User is not authenticated
         setIsSignedIn(false);
-        console.log('is not authenticated')
       }
       setLoading(false);
-      // Do other things
     });
   };
 
   const signin = async (email, password) => {
-    setCtaLoading(true)
+    setCtaLoading(true);
     try {
       await firebase.auth().signInWithEmailAndPassword(email, password);
     } catch (error) {
       alert(error);
     }
-    setCtaLoading(false)
+    setCtaLoading(false);
   };
 
   const signup = async (email, password) => {
-    setCtaLoading(true)
+    setCtaLoading(true);
     try {
       await firebase.auth().createUserWithEmailAndPassword(email, password);
     } catch (error) {
       alert(error);
     }
-    setCtaLoading(false)
+    setCtaLoading(false);
   };
 
   const signout = () => {
@@ -60,7 +57,15 @@ export const AuthProvider = (props) => {
 
   return (
     <AuthContext.Provider
-      value={{ signin, signout, signup, checkAuth, isSignedIn, loading, ctaLoading }}
+      value={{
+        signin,
+        signout,
+        signup,
+        checkAuth,
+        isSignedIn,
+        loading,
+        ctaLoading,
+      }}
     >
       {props.children}
     </AuthContext.Provider>

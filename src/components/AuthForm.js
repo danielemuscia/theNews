@@ -2,16 +2,13 @@ import React, { useState } from "react";
 import {
   View,
   Text,
-  Button,
   TextInput,
   Image,
   StyleSheet,
   TouchableOpacity,
-  Linking,
 } from "react-native";
 import logo from "../../assets/img/theNews-cutted.png";
 import { Entypo, AntDesign } from "@expo/vector-icons";
-import { ScrollView } from "react-native-gesture-handler";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scrollview";
 
 const AuthForm = ({

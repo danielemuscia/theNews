@@ -1,12 +1,12 @@
-import React, {useRef} from "react";
-import { View, Text, Animated } from "react-native";
+import React from "react";
+import { Animated } from "react-native";
 
 const H_MAX_HEIGHT = 150;
 const H_MIN_HEIGHT = 80;
 const H_SCROLL_DISTANCE = H_MAX_HEIGHT - H_MIN_HEIGHT;
 
 const CollapseHeader = (props) => {
-  const {scrollOffsetY} = props;
+  const { scrollOffsetY } = props;
 
   const headerScrollHeight = scrollOffsetY.interpolate({
     inputRange: [0, H_SCROLL_DISTANCE],
@@ -50,7 +50,7 @@ const CollapseHeader = (props) => {
           marginTop: 32,
           opacity: headerTitleOpacity,
           fontSize: 18,
-          fontFamily: 'bold'
+          fontFamily: "bold",
         }}
       >
         {props.title}
@@ -61,8 +61,8 @@ const CollapseHeader = (props) => {
           bottom: 16,
           left: 16,
           opacity: heroTitleOpacity,
-          fontFamily: 'black',
-          fontSize: 32
+          fontFamily: "black",
+          fontSize: 32,
         }}
       >
         {props.title}

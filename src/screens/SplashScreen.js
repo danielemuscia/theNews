@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react'
-import { View, Text, Image } from 'react-native'
+import { View, Image } from 'react-native'
 import { AuthContext} from '../context/AuthContext'
-import {Context as NewsContext} from '../context/NewsContext'
 import * as Font from 'expo-font'
 import logo from '../../assets/img/theNews.png'
 

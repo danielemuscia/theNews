@@ -1,17 +1,25 @@
 import React from "react";
-import { View, Text, Alert } from "react-native";
+import { Alert } from "react-native";
 import AuthForm from "../components/AuthForm";
-import firebase from '../../Firebase'
-const RecoverPasswordScreen = ({navigation}) => {
+import firebase from "../../Firebase";
+const RecoverPasswordScreen = ({ navigation }) => {
   const passwordReset = (emailAddress) => {
-      firebase.auth().sendPasswordResetEmail(emailAddress).then(function() {
-        Alert.alert('Hai appena ricevuto una mail con le istruzioni per il recupero della password. Controlla anche in spam.')
-      }).catch(function(error) {
-        Alert.alert('Non esiste nessun account registrato con la mail inserita.')
+    firebase
+      .auth()
+      .sendPasswordResetEmail(emailAddress)
+      .then(function () {
+        Alert.alert(
+          "Hai appena ricevuto una mail con le istruzioni per il recupero della password. Controlla anche in spam."
+        );
+      })
+      .catch(function (error) {
+        Alert.alert(
+          "Non esiste nessun account registrato con la mail inserita."
+        );
       });
-  }
+  };
 
-    return (
+  return (
     <AuthForm
       textCta={"RECUPERA PASSWORD"}
       textHeadline="Password Dimenticata?"

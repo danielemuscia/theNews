@@ -1,18 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
-import {
-  View,
-  Text,
-  Image,
-  Button,
-  Alert,
-  Linking,
-  Share,
-  StyleSheet,
-} from "react-native";
+import { View, Text, Image, Alert, Share, StyleSheet } from "react-native";
 import { Context as NewsContext } from "../context/NewsContext";
-import { AuthContext } from "../context/AuthContext";
 import * as WebBrowser from "expo-web-browser";
-import firebase from "firebase";
 import Header from "../components/Header";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 
@@ -47,15 +36,15 @@ const SingleNewsScreen = ({ route, navigation }) => {
     try {
       deleteReadLaterNews(newsInReadLater, state.readLater);
     } catch (error) {
-      Alert.alert(`Si è verificato un errore e l'articolo non è stato salvato`)
+      Alert.alert(`Si è verificato un errore e l'articolo non è stato salvato`);
     }
-    setHasBeenMarked(false)
-  }
+    setHasBeenMarked(false);
+  };
 
   const addActionReadLaterNews = () => {
-    addToReadLater(route.params)
-    setHasBeenMarked(true)
-  }
+    addToReadLater(route.params);
+    setHasBeenMarked(true);
+  };
 
   const share = async (url) => {
     try {
@@ -69,7 +58,9 @@ const SingleNewsScreen = ({ route, navigation }) => {
         // dismissed
       }
     } catch (error) {
-      Alert.alert(`Ci sono stati dei problemi e non abbiamo potuto condividere l'articolo`);
+      Alert.alert(
+        `Ci sono stati dei problemi e non abbiamo potuto condividere l'articolo`
+      );
     }
   };
 
@@ -91,9 +82,11 @@ const SingleNewsScreen = ({ route, navigation }) => {
         <View style={styles.imageContainer}>
           <Image source={image ? { uri: image } : null} style={styles.image} />
         </View>
-        <Text style={styles.content}>{content.split('[+')[0]}</Text>
+        <Text style={styles.content}>{content.split("[+")[0]}</Text>
         <TouchableOpacity style={styles.cta} onPress={() => openWebPage(url)}>
-          <Text style={{textAlign: 'center', fontFamily: 'bold'}}>LEGGI L'ARTICOLO COMPLETO</Text>
+          <Text style={{ textAlign: "center", fontFamily: "bold" }}>
+            LEGGI L'ARTICOLO COMPLETO
+          </Text>
         </TouchableOpacity>
       </ScrollView>
     </>
@@ -136,8 +129,8 @@ const styles = StyleSheet.create({
     padding: 10,
     marginHorizontal: 40,
     marginVertical: 20,
-    borderRadius: 5
-  }
+    borderRadius: 5,
+  },
 });
 
 export default SingleNewsScreen;

@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
-import { TouchableOpacity, TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { navigate } from "../navigationRef";
 import notFound from "../../assets/img/not-found.png";
 
@@ -9,8 +9,8 @@ const SingleNews = ({
   description = "Nessuna descrizione",
   title = "Titolo non disponibile",
   content = "Contenuto non disponibile",
-  author = 'Sconosciuto',
-  url = 'non disponibile',
+  author = "Sconosciuto",
+  url = "non disponibile",
   id,
   source = { name: "Notizia" },
 }) => {
@@ -31,7 +31,10 @@ const SingleNews = ({
     >
       <View style={styles.container}>
         <View style={styles.imageContainer}>
-          <Image source={image ? { uri: image } : notFound} style={styles.image} />
+          <Image
+            source={image ? { uri: image } : notFound}
+            style={styles.image}
+          />
         </View>
         <View style={styles.textContainer}>
           <Text style={styles.title}>{title}</Text>
